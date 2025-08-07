@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IELTS Mastery - Online IELTS Preparation",
+  title: "Best IELTS Preparation Course",
   description: "Achieve your dream IELTS score with our comprehensive online course",
 };
 
