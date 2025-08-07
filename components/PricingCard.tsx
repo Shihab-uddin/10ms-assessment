@@ -1,41 +1,47 @@
 // components/PricingCard.tsx
 import CourseSlider from "@/components/CourseSlider";
 
-type PricingCardProps = {
-  price: number;
-  discountedPrice: number;
-  features: string[];
+type ChecklistItem = {
+  id: string;
+  icon: string;
+  text: string;
+  color: string;
+  list_page_visibility: boolean;
 };
 
-export default function PricingCard({ price, discountedPrice, features }: PricingCardProps) {
+type PricingCardProps = {
+  media: []; // You can define more precise types if needed
+  checklist: ChecklistItem[];
+};
+
+export default function PricingCard({ checklist, media }: PricingCardProps) {
   return (
-    <div className="bg-white border-1 border-zinc-500 shadow-xl overflow-hidden">
+    <div className="w-[400px] bg-white border border-gray-300 overflow-hidden absolute">
       <div className="relative p-1">
-        <CourseSlider />
+        <CourseSlider media={media} />
       </div>
-      <div className="p-6 text-gray-800">
+
+      <div className="p-6 mt-[40px] text-gray-800">
         <div className="flex items-baseline">
           <span className="text-3xl font-bold">1000</span>
         </div>
-        <button className="mt-4 w-full bg-green-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+
+        <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 cursor-pointer">
           Enroll Now
         </button>
+
         <div className="mt-6">
-          <h3 className="font-medium text-gray-900">This course includes:</h3>
-          <ul className="mt-2 space-y-2">
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <svg
-                  className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-gray-700">{feature}</span>
-              </li>
-            ))}
+          <p className="mb-4 text-xl font-semibold">What's in this course</p>
+
+          <ul className="space-y-3">
+            {checklist
+              .filter((item) => item.list_page_visibility)
+              .map((item) => (
+                <li key={item.id} className="flex items-center gap-3">
+                  <img src={item.icon} alt="checklist icon" className="w-6 h-6" />
+                  <span style={{ color: item.color }}>{item.text}</span>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full bg-gray-50">
+    <html lang="en" className="h-full bg-white-50">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}>
         <div className="min-h-full flex flex-col">
           <Navbar />
