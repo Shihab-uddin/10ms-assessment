@@ -12,9 +12,11 @@ type ChecklistItem = {
 type PricingCardProps = {
   media: []; // You can define more precise types if needed
   checklist: ChecklistItem[];
+  cta:[];
+  ctavalue:[];
 };
 
-export default function PricingCard({ checklist, media }: PricingCardProps) {
+export default function PricingCard({ checklist, media, cta, ctavalue }: PricingCardProps) {
   return (
     <div className="w-[400px] bg-white border border-gray-300 overflow-hidden absolute">
       <div className="relative p-1">
@@ -23,11 +25,11 @@ export default function PricingCard({ checklist, media }: PricingCardProps) {
 
       <div className="p-6 mt-[40px] text-gray-800">
         <div className="flex items-baseline">
-          <span className="text-3xl font-bold">1000</span>
+          <span className="text-2xl font-semibold">1000</span>
         </div>
 
-        <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 cursor-pointer">
-          Enroll Now
+        <button value={ctavalue} className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 cursor-pointer">
+          {cta}
         </button>
 
         <div className="mt-6">

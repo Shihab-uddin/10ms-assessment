@@ -1,6 +1,17 @@
+'use client';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const currentLang = pathname.split('/')[1];
+  const otherLang = currentLang === 'en' ? 'bn' : 'en';
+
+  const switchLanguage = () => {
+    router.push(pathname.replace(`/${currentLang}`, `/${otherLang}`));
+  };
   return (
     <nav className="w-full border-b border-gray-200 bg-white dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,7 +22,9 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <p>locale</p>
+            <button onClick={switchLanguage} className="bg-green-600 p-1 text-white-600 cursor-pointer">
+              {otherLang.toUpperCase()}
+            </button>
           </div>
         </div>
       </div>

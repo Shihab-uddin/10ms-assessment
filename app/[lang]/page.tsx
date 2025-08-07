@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 import HeroSection from "@/components/HeroSection";
@@ -50,16 +49,32 @@ import { fetchCourseDetails } from "@/lib/fetchCourseDetails";
 //   ]
 // };
 
+type Props = {
+  params: {
+    lang: 'en' | 'bn';
+  };
+};
 
-export default async  function CourseDetail() {
-  const course = await fetchCourseDetails('en');
+export const dynamicParams = false;
 
-  //instructure fetching
+export const generateStaticParams = () => {
+  return [{ lang: 'en' }, { lang: 'bn' }];
+};
+
+
+export default async  function CourseDetail({ params }: Props) {
+  const { lang } = await params;
+  const course = await fetchCourseDetails(lang);
+
+  //instructor fetching
   const instructorSection = course.sections.find(
     (section: any) => section.type === 'instructors'
   );
   const instructor = instructorSection?.values?.[0];
   const instructorSectionHeading = instructorSection?.name;
+
+  const ctatextname = course.cta_text.name;
+  const ctatextval = course.cta_text.value;
 
 
 
@@ -73,6 +88,8 @@ export default async  function CourseDetail() {
         <PricingCard
           checklist={course.checklist}
           media={course.media}
+          cta = {ctatextname}
+          ctavalue= {ctatextval}
         />
       </HeroSection>
 
@@ -81,7 +98,7 @@ export default async  function CourseDetail() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="lg:flex gap-8">
           <div className="lg:w-2/3">
-            <h2 className="text-lg font-medium text-gray-900 mb-4">{instructorSectionHeading}</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">{instructorSectionHeading}</h2>
             {instructor && (
               <InstructorCard
                 name={instructor.name}

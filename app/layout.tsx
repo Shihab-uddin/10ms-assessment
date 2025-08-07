@@ -34,7 +34,7 @@ export default function RootLayout({
           <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <p className="text-center text-sm text-gray-500">
-                © {new Date().getFullYear()} IELTS Mastery. All rights reserved.
+                © {new Date().getFullYear()} 10ms Assessment.
               </p>
             </div>
           </footer>

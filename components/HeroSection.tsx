@@ -1,4 +1,3 @@
-// components/HeroSection.tsx
 type HeroSectionProps = {
   title: string;
   subtitle: string;
@@ -15,7 +14,7 @@ export default function HeroSection({ title, subtitle, children }: HeroSectionPr
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-start gap-8">
-          {/* Left: Title + Subtitle */}
+          {/* Left col */}
           <div className="lg:w-2/3">
             <h1 className="text-3xl font-bold">{title}</h1>
             <div
@@ -24,7 +23,7 @@ export default function HeroSection({ title, subtitle, children }: HeroSectionPr
             />
           </div>
 
-          {/* Right: PricingCard or any children */}
+          {/* Right col pricing card */}
           <div className="lg:w-1/3 w-full">
             {children}
           </div>
