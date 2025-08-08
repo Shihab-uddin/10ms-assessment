@@ -10,6 +10,7 @@ import FeatureExplanations from '@/components/FeatureExplanations';
 import WhatYoullLearn from "@/components/WhatYoullLearnCard";
 import CourseDetails from "@/components/CourseDetails";
 import SidebarPricing from "@/components/SidebarPricingCard";
+import SEOHead from "@/components/SEOHead";
 // // Types
 // type CourseModule = {
 //   title: string;
@@ -71,6 +72,7 @@ export const generateStaticParams = () => {
 export default async  function CourseDetail({ params }: Props) {
   const { lang } = await params;
   const course = await fetchCourseDetails(lang);
+  const seo = course.seo;
 
   //instructor fetching
   const instructorSection = course.sections.find(
@@ -120,7 +122,9 @@ export default async  function CourseDetail({ params }: Props) {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+    <SEOHead seo={seo}/>
+    <div className="min-h-screen bg-white">
       {/* Hero component */}
       <HeroSection
         title={course.title}
@@ -171,5 +175,6 @@ export default async  function CourseDetail({ params }: Props) {
         </div>
       </main>
     </div>
+    </>
   );
 }
