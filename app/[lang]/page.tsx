@@ -9,6 +9,7 @@ import GroupJoint from "@/components/GroupJoint";
 import FeatureExplanations from '@/components/FeatureExplanations';
 import WhatYoullLearn from "@/components/WhatYoullLearnCard";
 import CourseDetails from "@/components/CourseDetails";
+import SidebarPricing from "@/components/SidebarPricingCard";
 // // Types
 // type CourseModule = {
 //   title: string;
@@ -114,16 +115,18 @@ export default async  function CourseDetail({ params }: Props) {
     (section: any) => section.type === 'about'
   );
   const aboutValues = aboutSection?.values || [];
+  const aboutSectionHeading = aboutSection?.name;
 
 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+      {/* Hero component */}
       <HeroSection
         title={course.title}
         subtitle={course.description}
       >
+        {/* pricing card component */}
         <PricingCard
           checklist={course.checklist}
           media={course.media}
@@ -131,38 +134,39 @@ export default async  function CourseDetail({ params }: Props) {
           ctavalue= {ctatextval}
         />
       </HeroSection>
+      {/* Hero component ends */}
 
-
-      {/* Main Content */}
+      {/* Main Content block */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="lg:flex gap-8">
-          <div className="lg:w-2/3">
+          <div className="lg:w-2/3 space-y-12">
+            {/* Instructor component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{instructorSectionHeading}</h2>
-            {instructor && (
-              <InstructorCard
-                name={instructor.name}
-                image={instructor.image}
-                description={instructor.description}
-              />
-            )}
-
+            {instructor && (<InstructorCard name={instructor.name} image={instructor.image} description={instructor.description}/>)}
+            {/* course features component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{featuresValuesHeading}</h2>
             {featuresValues && <CourseFeatures features={featuresValues} />}
-
+            {/* group join component */}
             {groupJoinEngagementValues && <GroupJoint groupJoinfeatures={groupJoinEngagementValues} />}
-
+            {/* what youll learn component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{whatYoullLearnValuesHeading}</h2>
             {groupJoinEngagementValues && <WhatYoullLearn whatYoullLearn={whatYoullLearnValues}  />}
-
-
+            {/* features explaination component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{featureExplanationsHeading}</h2>
             {featureExplanationsValues.length > 0 && (<FeatureExplanations features={featureExplanationsValues} />)}
-
+            {/* course details component */}
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">{aboutSectionHeading}</h2>
             {aboutValues.length > 0 && <CourseDetails aboutValues={aboutValues} />}
           </div>
 
+          {/* Sidebar block */}
           <div className="lg:w-1/3 mt-8 lg:mt-0">
-            
+            <SidebarPricing
+              checklist={course.checklist}
+              media={course.media}
+              cta={ctatextname}
+              ctavalue={ctatextval}
+            />
           </div>
         </div>
       </main>

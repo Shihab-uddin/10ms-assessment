@@ -13,7 +13,7 @@ export default function Navbar() {
     router.push(pathname.replace(`/${currentLang}`, `/${otherLang}`));
   };
   return (
-    <nav className="w-full border-b border-gray-200 bg-white dark:border-gray-800">
+    <nav className="fixed z-40 w-full border-b border-gray-300 bg-white dark:border-gray-300 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">

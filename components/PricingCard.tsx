@@ -18,7 +18,7 @@ type PricingCardProps = {
 
 export default function PricingCard({ checklist, media, cta, ctavalue }: PricingCardProps) {
   return (
-    <div className="w-[400px] bg-white border border-gray-300 overflow-hidden absolute">
+    <div className="w-[400px] bg-white border border-gray-300 overflow-hidden absolute z-30">
       <div className="relative p-1">
         <CourseSlider media={media} />
       </div>
