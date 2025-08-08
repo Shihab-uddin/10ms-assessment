@@ -3,7 +3,12 @@ import dynamic from 'next/dynamic';
 import HeroSection from "@/components/HeroSection";
 import InstructorCard from "@/components/InstructureCard";
 import PricingCard from "@/components/PricingCard";
+import CourseFeatures from "@/components/courseFeatures";
 import { fetchCourseDetails } from "@/lib/fetchCourseDetails";
+import GroupJoint from "@/components/GroupJoint";
+import FeatureExplanations from '@/components/FeatureExplanations';
+import WhatYoullLearn from "@/components/WhatYoullLearnCard";
+import CourseDetails from "@/components/CourseDetails";
 // // Types
 // type CourseModule = {
 //   title: string;
@@ -76,6 +81,40 @@ export default async  function CourseDetail({ params }: Props) {
   const ctatextname = course.cta_text.name;
   const ctatextval = course.cta_text.value;
 
+  //features fething
+  const featuresSection = course.sections.find(
+    (section: any) => section.type === 'features'
+  );
+  const featuresValues = featuresSection?.values;
+  const featuresValuesHeading = featuresSection?.name;
+
+  // group_join_engagement fetching
+  const groupJoinEngagementSection = course.sections.find(
+    (section: any) => section.type === "group_join_engagement"
+  );
+  const groupJoinEngagementValues = groupJoinEngagementSection?.values;
+
+  // what you'll learn section fetching
+  const whatYoullLearn = course.sections.find(
+    (section: any) => section.type === "pointers"
+  );
+  const whatYoullLearnValues = whatYoullLearn?.values;
+  const whatYoullLearnValuesHeading = whatYoullLearn?.name;
+
+  //features explaination section fetching
+  const featureExplanationsSection = course.sections.find(
+    (section: any) => section.type === 'feature_explanations'
+  );
+  const featureExplanationsValues = featureExplanationsSection?.values || [];
+  const featureExplanationsHeading = featureExplanationsSection?.name;
+
+
+  //course details section fetching
+  const aboutSection = course.sections.find(
+    (section: any) => section.type === 'about'
+  );
+  const aboutValues = aboutSection?.values || [];
+
 
 
   return (
@@ -106,6 +145,20 @@ export default async  function CourseDetail({ params }: Props) {
                 description={instructor.description}
               />
             )}
+
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">{featuresValuesHeading}</h2>
+            {featuresValues && <CourseFeatures features={featuresValues} />}
+
+            {groupJoinEngagementValues && <GroupJoint groupJoinfeatures={groupJoinEngagementValues} />}
+
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">{whatYoullLearnValuesHeading}</h2>
+            {groupJoinEngagementValues && <WhatYoullLearn whatYoullLearn={whatYoullLearnValues}  />}
+
+
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">{featureExplanationsHeading}</h2>
+            {featureExplanationsValues.length > 0 && (<FeatureExplanations features={featureExplanationsValues} />)}
+
+            {aboutValues.length > 0 && <CourseDetails aboutValues={aboutValues} />}
           </div>
 
           <div className="lg:w-1/3 mt-8 lg:mt-0">
