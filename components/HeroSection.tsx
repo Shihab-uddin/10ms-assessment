@@ -7,7 +7,7 @@ type HeroSectionProps = {
 export default function HeroSection({ title, subtitle, children }: HeroSectionProps) {
   return (
     <div
-      className="text-white h-[35vh] bg-cover bg-center bg-no-repeat flex items-center"
+      className="text-white h-[40vh] bg-cover bg-center bg-no-repeat flex items-center"
       style={{
         backgroundImage: `url('/herobackground.jpeg')`,
       }}

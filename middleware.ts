@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip if already localized
+  // skipping is lang is already selected
   if (pathname.startsWith('/en') || pathname.startsWith('/bn')) {
     return;
   }
@@ -16,5 +16,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/'], // Apply middleware only on root
+  matcher: ['/'], // Apply this middleware only in root page
 };

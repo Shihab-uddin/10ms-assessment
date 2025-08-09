@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import PricingCard from "./PricingCard";
+import StickyPricingCard from "./StickyPricingCard";
 
 type SidebarPricingProps = {
   checklist: any;
@@ -33,9 +33,8 @@ export default function SidebarPricing({
       }`}
     >
       <div className="fixed top-20"> 
-        <PricingCard
+        <StickyPricingCard
           checklist={checklist}
-          media={media}
           cta={cta}
           ctavalue={ctavalue}
         />
