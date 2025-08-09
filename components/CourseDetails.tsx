@@ -23,7 +23,7 @@ export default function CourseDetails({ aboutValues }: AboutProps) {
   return (
     <div className="overflow-hidden mb-6 md:rounded-md md:border p-6 space-y-6">
       {aboutValues.map(({ id, title, description }, index) => (
-        <div key={id} className="rounded-md overflow-hidden border-b border-dotted border-gray-300 pb-2">
+        <div key={id} className="overflow-hidden border-b border-dotted border-gray-300 pb-2">
           {/* Dropdown header */}
           <button
             onClick={() => toggleIndex(index)}

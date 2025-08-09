@@ -28,7 +28,7 @@ export default function PricingCard({ checklist, media, cta, ctavalue }: Pricing
           <span className="text-2xl font-semibold">1000</span>
         </div>
 
-        <button value={ctavalue} className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 cursor-pointer">
+        <button value={ctavalue} className="mt-4 w-full bg-green-600 hover:bg-green-700 border-b-4 border-b-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 cursor-pointer">
           {cta}
         </button>
 

@@ -36,7 +36,7 @@ export default function GroupJoint({ groupJoinfeatures }: GroupJoint) {
                 href={feature.cta.clicked_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-2 rounded-md font-medium bg-green-600 text-white hover:bg-green-700 transition"
+                className="inline-block px-6 py-2 rounded-md font-medium bg-green-600 border-b-4 border-b-green-700 text-white hover:bg-green-700 transition"
               >
                 {feature.cta.text}
               </a>

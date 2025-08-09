@@ -146,7 +146,7 @@ export default async  function CourseDetail({ params }: Props) {
           <div className="lg:w-2/3 space-y-12">
             {/* Instructor component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{instructorSectionHeading}</h2>
-            {instructor && (<InstructorCard name={instructor.name} image={instructor.image} description={instructor.description}/>)}
+            {instructor && (<InstructorCard name={instructor.name} image={instructor.image} description={instructor.description} hasinspage={instructor.has_instructor_page} slug={instructor.slug}/>)}
             {/* course features component */}
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{featuresValuesHeading}</h2>
             {featuresValues && <CourseFeatures features={featuresValues} />}
